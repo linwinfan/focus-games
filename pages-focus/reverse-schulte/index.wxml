@@ -1,0 +1,51 @@
+<game-header title="反向舒尔特" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="setup-section">
+    <difficulty-selector
+      label="网格大小"
+      options="{{gridOptions}}"
+      selected="{{gridSize}}"
+      bind:change="onGridChange"
+    />
+  </view>
+  <view class="instruction">从大到小依次点击数字（{{gridSize*gridSize}} → 1）</view>
+  <view class="best-record" wx:if="{{bestTime > 0}}">
+    最佳成绩：<text class="best-val">{{bestTime}}s</text>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始训练</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="timer-display">{{timerDisplay}}</text>
+    <text class="progress-display">{{currentNumber}}/1</text>
+  </view>
+  <view class="grid" style="grid-template-columns: repeat({{gridSize}}, 1fr)">
+    <view
+      class="grid-cell {{item.found ? 'found' : ''}}"
+      wx:for="{{gridData}}"
+      wx:key="value"
+      bindtap="onCellTap"
+      data-value="{{item.value}}"
+    >
+      <text>{{item.value}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="反向舒尔特"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
