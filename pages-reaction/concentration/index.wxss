@@ -1,0 +1,39 @@
+.game-container { padding: 24rpx; }
+.instruction {
+  background: #fff; border-radius: 16rpx; padding: 40rpx 32rpx;
+  margin-bottom: 48rpx;
+}
+.inst-title { font-size: 32rpx; font-weight: 600; color: #333; text-align: center; margin-bottom: 24rpx; }
+.inst-item { font-size: 28rpx; color: #666; margin-bottom: 12rpx; padding-left: 16rpx; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.game-area { padding: 24rpx; }
+.game-info {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 32rpx; margin-bottom: 24rpx;
+}
+.phase-display { font-size: 30rpx; font-weight: 600; color: #333; }
+.timer-display { font-size: 32rpx; color: #4A90D9; font-weight: 600; }
+
+.phase-area { background: #fff; border-radius: 16rpx; padding: 32rpx; min-height: 50vh; }
+.go-area { display: flex; align-items: center; justify-content: center; height: 50vh; }
+.stimulus-circle {
+  width: 200rpx; height: 200rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.stimulus-circle.go { background: #52C41A; }
+.stimulus-circle.no-go { background: #FF4D4F; }
+.stimulus-circle text { color: #fff; font-size: 36rpx; font-weight: 700; }
+.waiting-text { font-size: 32rpx; color: #999; }
+
+.phase-2 { display: flex; align-items: center; justify-content: center; background: #FF4D4F; }
+.phase-2 .msg-waiting { font-size: 40rpx; color: #fff; }
+.phase-2 .msg-go { font-size: 48rpx; color: #fff; font-weight: 700; }
+.phase-2 .msg-result { font-size: 36rpx; color: rgba(255,255,255,0.9); }
+
+.search-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16rpx; }
+.search-item {
+  aspect-ratio: 1; border-radius: 12rpx;
+}
+.result-area { padding: 24rpx 0; }

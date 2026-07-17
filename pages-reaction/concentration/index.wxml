@@ -1,0 +1,75 @@
+<game-header title="专注力测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-title">3 分钟综合专注力测试</view>
+    <view class="inst-item">阶段 1：Go/No-Go（60s）</view>
+    <view class="inst-item">阶段 2：反应时（60s）</view>
+    <view class="inst-item">阶段 3：视觉搜索（60s）</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="phase-display">{{phaseName}}</text>
+    <text class="timer-display">{{remainingTime}}s</text>
+  </view>
+
+  <!-- 阶段 1: Go/No-Go -->
+  <view class="phase-area" wx:if="{{currentPhase === 1}}">
+    <view class="go-area">
+      <view
+        class="stimulus-circle {{stimulusType === 'go' ? 'go' : 'no-go'}}"
+        wx:if="{{showStimulus}}"
+        bindtap="onTap"
+      >
+        <text wx:if="{{stimulusType === 'go'}}">点!</text>
+      </view>
+      <view class="waiting-text" wx:elif="{{waiting}}">
+        <text>等待...</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 阶段 2: 反应时 -->
+  <view class="phase-area phase-2" wx:if="{{currentPhase === 2}}"
+    bindtap="onTap">
+    <view class="message-area">
+      <text wx:if="{{phase2State === 'waiting'}}" class="msg-waiting">等待绿色...</text>
+      <text wx:if="{{phase2State === 'go'}}" class="msg-go">点击!</text>
+      <text wx:if="{{phase2State === 'result'}}" class="msg-result">{{phase2Result}}</text>
+    </view>
+  </view>
+
+  <!-- 阶段 3: 视觉搜索 -->
+  <view class="phase-area" wx:if="{{currentPhase === 3}}">
+    <view class="search-grid">
+      <view
+        class="search-item"
+        style="background: {{item.isTarget ? targetColor : normalColor}}"
+        wx:for="{{searchItems}}"
+        wx:key="id"
+        bindtap="onSearchTap"
+        data-index="{{index}}"
+      >
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="专注力测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
