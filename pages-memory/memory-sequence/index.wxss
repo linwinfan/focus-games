@@ -1,0 +1,34 @@
+.game-container { padding: 24rpx; }
+.instruction {
+  background: #fff; border-radius: 16rpx; padding: 40rpx 32rpx;
+  margin-bottom: 48rpx;
+}
+.inst-item { font-size: 28rpx; color: #666; margin-bottom: 12rpx; padding-left: 16rpx; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.game-area { padding: 24rpx; }
+.game-info {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 32rpx; margin-bottom: 24rpx;
+}
+.level-display { font-size: 32rpx; font-weight: 600; color: #333; }
+.phase-display { font-size: 28rpx; color: #4A90D9; }
+
+.memory-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20rpx;
+  background: #fff; border-radius: 16rpx; padding: 24rpx; aspect-ratio: 1;
+}
+.memory-cell {
+  display: flex; align-items: center; justify-content: center;
+  background: #f0f0f0; border-radius: 16rpx;
+  font-size: 40rpx; font-weight: 600; color: #999;
+  transition: all 0.3s;
+}
+.memory-cell.lit {
+  background: #4A90D9; color: #fff;
+  box-shadow: 0 0 20rpx rgba(74, 144, 217, 0.5);
+}
+.memory-cell.correct { background: #52C41A; color: #fff; }
+.memory-cell.wrong { background: #FF4D4F; color: #fff; }
+.result-area { padding: 24rpx 0; }

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "记忆序列游戏",
+  "usingComponents": {
+    "game-header": "/components/game-header/game-header",
+    "result-panel": "/components/result-panel/result-panel",
+    "history-list": "/components/history-list/history-list"
+  }
+}

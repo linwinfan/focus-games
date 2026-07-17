@@ -1,0 +1,44 @@
+<game-header title="记忆序列游戏" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-item">记住亮灯顺序</view>
+    <view class="inst-item">然后按相同顺序点击</view>
+    <view class="inst-item">每轮增加一格</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始游戏</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="level-display">第 {{level}} 关</text>
+    <text class="phase-display">{{phaseText}}</text>
+  </view>
+  <view class="grid memory-grid">
+    <view
+      class="grid-cell memory-cell {{item.lit ? 'lit' : ''}} {{item.correct ? 'correct' : ''}} {{item.wrong ? 'wrong' : ''}}"
+      wx:for="{{cells}}"
+      wx:key="id"
+      bindtap="onCellTap"
+      data-index="{{index}}"
+    >
+      <text>{{item.id + 1}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="记忆序列游戏"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
