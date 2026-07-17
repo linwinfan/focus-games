@@ -1,0 +1,70 @@
+<game-header title="番茄专注计时器" />
+
+<view class="pomodoro-container">
+  <!-- 模式切换 -->
+  <view class="mode-tabs">
+    <view
+      class="mode-tab {{currentMode === item.value ? 'active' : ''}}"
+      wx:for="{{modes}}"
+      wx:key="value"
+      bindtap="onModeChange"
+      data-mode="{{item.value}}"
+    >
+      <text>{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 计时器显示 -->
+  <view class="timer-circle">
+    <text class="timer-text">{{timeDisplay}}</text>
+    <text class="timer-mode-label">{{modeLabel}}</text>
+  </view>
+
+  <!-- 控制按钮 -->
+  <view class="controls">
+    <button class="btn-secondary" bindtap="onReset" disabled="{{!hasStarted}}">重置</button>
+    <button class="btn-primary btn-large" bindtap="onToggle">
+      {{isRunning ? '暂停' : '开始'}}
+    </button>
+  </view>
+
+  <!-- 统计 -->
+  <view class="pomo-stats">
+    <view class="pomo-stat">
+      <text class="pomo-stat-num">{{completedRounds}}</text>
+      <text class="pomo-stat-label">完成轮次</text>
+    </view>
+    <view class="pomo-stat">
+      <text class="pomo-stat-num">{{todayFocusMinutes}}</text>
+      <text class="pomo-stat-label">今日专注(分)</text>
+    </view>
+  </view>
+
+  <!-- 设置 -->
+  <view class="settings-section">
+    <view class="setting-row">
+      <text>专注时长（分钟）</text>
+      <view class="stepper">
+        <view class="stepper-btn" bindtap="adjustFocus" data-delta="-5">-</view>
+        <text class="stepper-val">{{focusDuration}}</text>
+        <view class="stepper-btn" bindtap="adjustFocus" data-delta="5">+</view>
+      </view>
+    </view>
+    <view class="setting-row">
+      <text>短休息（分钟）</text>
+      <view class="stepper">
+        <view class="stepper-btn" bindtap="adjustShortBreak" data-delta="-1">-</view>
+        <text class="stepper-val">{{shortBreakDuration}}</text>
+        <view class="stepper-btn" bindtap="adjustShortBreak" data-delta="1">+</view>
+      </view>
+    </view>
+    <view class="setting-row">
+      <text>长休息（分钟）</text>
+      <view class="stepper">
+        <view class="stepper-btn" bindtap="adjustLongBreak" data-delta="-5">-</view>
+        <text class="stepper-val">{{longBreakDuration}}</text>
+        <view class="stepper-btn" bindtap="adjustLongBreak" data-delta="5">+</view>
+      </view>
+    </view>
+  </view>
+</view>

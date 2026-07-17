@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "番茄专注计时器",
+  "usingComponents": {
+    "game-header": "/components/game-header/game-header"
+  }
+}

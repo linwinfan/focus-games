@@ -1,0 +1,49 @@
+.pomodoro-container { padding: 24rpx; }
+
+.mode-tabs {
+  display: flex; background: #fff; border-radius: 16rpx;
+  padding: 8rpx; margin-bottom: 32rpx;
+}
+.mode-tab {
+  flex: 1; text-align: center; padding: 20rpx;
+  border-radius: 12rpx; font-size: 28rpx; color: #666;
+}
+.mode-tab.active { background: #4A90D9; color: #fff; font-weight: 600; }
+
+.timer-circle {
+  width: 480rpx; height: 480rpx; border-radius: 50%;
+  border: 8rpx solid #4A90D9; margin: 48rpx auto;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.timer-text { font-size: 80rpx; font-weight: 700; color: #333; }
+.timer-mode-label { font-size: 26rpx; color: #999; margin-top: 8rpx; }
+
+.controls {
+  display: flex; gap: 24rpx; justify-content: center; margin-bottom: 40rpx;
+}
+.controls .btn-secondary { width: 200rpx; }
+.controls .btn-large { width: 300rpx; }
+
+.pomo-stats {
+  display: flex; background: #fff; border-radius: 16rpx;
+  padding: 32rpx 0; margin-bottom: 24rpx;
+}
+.pomo-stat { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8rpx; }
+.pomo-stat-num { font-size: 44rpx; font-weight: 700; color: #4A90D9; }
+.pomo-stat-label { font-size: 24rpx; color: #999; }
+
+.settings-section { background: #fff; border-radius: 16rpx; padding: 8rpx 32rpx; }
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24rpx 0; border-bottom: 1rpx solid #f5f5f5;
+  font-size: 28rpx; color: #333;
+}
+.setting-row:last-child { border-bottom: none; }
+.stepper { display: flex; align-items: center; gap: 24rpx; }
+.stepper-btn {
+  width: 56rpx; height: 56rpx; border-radius: 50%;
+  background: #f0f0f0; display: flex; align-items: center;
+  justify-content: center; font-size: 32rpx; color: #666;
+}
+.stepper-val { font-size: 32rpx; font-weight: 600; min-width: 48rpx; text-align: center; }
