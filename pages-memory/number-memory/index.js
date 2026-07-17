@@ -10,6 +10,12 @@ Page({
     phaseText: '记住数字',
     currentNumber: '',
     userInput: '',
+    numpadRows: [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+      [0]
+    ],
     result: {},
     history: []
   },

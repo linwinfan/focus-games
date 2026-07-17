@@ -26,10 +26,10 @@
   <view class="input-area" wx:if="{{phase === 'input'}}">
     <view class="input-display">{{userInput || '?'}}</view>
     <view class="numpad">
-      <view class="numpad-row" wx:for="{{[0,1,2]}}" wx:key="*this" wx:for-item="row">
+      <view class="numpad-row" wx:for="{{numpadRows}}" wx:key="*this" wx:for-item="row">
         <view
           class="numpad-btn"
-          wx:for="{{[1,2,3,4,5,6,7,8,9,0].slice(row*3, row*3+3)}}"
+          wx:for="{{row}}"
           wx:key="*this"
           wx:for-item="num"
           bindtap="onNumTap"
@@ -39,10 +39,10 @@
         </view>
       </view>
       <view class="numpad-row">
-        <view class="nampad-btn-clear" bindtap="onClearTap">
+        <view class="numpad-btn-clear" bindtap="onClearTap">
           <text>清除</text>
         </view>
-        <view class="nampad-btn-submit" bindtap="onSubmitTap">
+        <view class="numpad-btn-submit" bindtap="onSubmitTap">
           <text>确认</text>
         </view>
       </view>
