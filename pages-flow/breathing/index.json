@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "专注呼吸练习",
+  "usingComponents": {
+    "game-header": "/components/game-header/game-header"
+  }
+}

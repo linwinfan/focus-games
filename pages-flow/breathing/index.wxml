@@ -1,0 +1,58 @@
+<game-header title="专注呼吸练习" />
+
+<view class="breathing-container" wx:if="{{state === 'ready'}}">
+  <view class="setup-section">
+    <view class="difficulty-label">呼吸模式</view>
+    <view class="mode-options">
+      <view
+        class="mode-option {{selectedMode === item.value ? 'selected' : ''}}"
+        wx:for="{{modes}}"
+        wx:key="value"
+        bindtap="onModeChange"
+        data-value="{{item.value}}"
+      >
+        <text>{{item.label}}</text>
+      </view>
+    </view>
+    <view class="rounds-setting">
+      <text class="setting-label">练习轮数</text>
+      <view class="rounds-display">{{rounds}} 轮</view>
+      <view class="stepper">
+        <view class="stepper-btn" bindtap="adjustRounds" data-delta="-1">-</view>
+        <view class="stepper-btn" bindtap="adjustRounds" data-delta="1">+</view>
+      </view>
+    </view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始练习</button>
+  </view>
+</view>
+
+<view class="breathing-area" wx:elif="{{state === 'playing'}}">
+  <view class="breathing-info">
+    <text class="round-display">第 {{currentRound}}/{{rounds}} 轮</text>
+    <text class="phase-display">{{phaseText}}</text>
+  </view>
+  <view class="breathing-circle-container">
+    <view
+      class="breathing-circle {{phase}}"
+      style="animation-duration: {{phaseDuration}}s; animation-play-state: {{isRunning ? 'running' : 'paused'}};"
+    >
+      <text class="circle-text">{{phaseText}}</text>
+    </view>
+  </view>
+  <view class="breathing-controls">
+    <button class="btn-secondary" bindtap="onPauseResume">{{isRunning ? '暂停' : '继续'}}</button>
+    <button class="btn-secondary" bindtap="onStop">结束</button>
+  </view>
+</view>
+
+<view class="breathing-result" wx:elif="{{state === 'finished'}}">
+  <view class="result-icon">🧘</view>
+  <view class="result-text">练习完成</view>
+  <view class="result-detail">完成 {{completedRounds}} 轮呼吸练习</view>
+  <view class="result-actions">
+    <button class="btn-secondary" bindtap="onReplay">再来一次</button>
+    <button class="btn-primary" bindtap="onShare">分享</button>
+  </view>
+</view>
