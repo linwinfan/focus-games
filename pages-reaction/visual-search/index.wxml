@@ -1,0 +1,47 @@
+<game-header title="视觉搜索测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-item">找出颜色不同的那个形状</view>
+    <view class="inst-item">难度逐轮递增</view>
+    <view class="inst-item">点错或超时则结束</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="level-display">第 {{level}} 关</text>
+    <text class="timer-display">{{timerDisplay}}</text>
+  </view>
+  <view class="search-grid">
+    <view
+      class="search-item {{item.shape}} {{item.isTarget ? 'target' : 'normal'}}"
+      style="background: {{item.isTarget ? targetColor : normalColor}}"
+      wx:for="{{items}}"
+      wx:key="id"
+      bindtap="onItemTap"
+      data-index="{{index}}"
+    >
+      <text wx:if="{{item.shape === 'circle'}}">●</text>
+      <text wx:elif="{{item.shape === 'triangle'}}">▲</text>
+      <text wx:else>■</text>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="视觉搜索测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
