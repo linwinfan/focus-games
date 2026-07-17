@@ -45,6 +45,6 @@
         <view class="recent-name">{{item.name}}</view>
         <view class="recent-arrow">›</view>
       </view>
-    </block>
+    </view>
   </block>
 </view>
