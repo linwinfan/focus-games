@@ -1,0 +1,31 @@
+.game-container { padding: 24rpx; }
+.setup-section { background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 24rpx; }
+.best-record { text-align: center; font-size: 26rpx; color: #666; margin: 24rpx 0; }
+.best-val { font-weight: 600; color: #4A90D9; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.game-area { padding: 24rpx; }
+.game-info {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 32rpx; margin-bottom: 24rpx;
+}
+.timer-display { font-size: 40rpx; font-weight: 600; color: #333; }
+.progress-display { font-size: 28rpx; color: #666; }
+
+.grid {
+  display: grid; gap: 12rpx; background: #fff;
+  border-radius: 16rpx; padding: 24rpx; aspect-ratio: 1;
+}
+.grid-cell {
+  display: flex; align-items: center; justify-content: center;
+  background: #f8f9fa; border-radius: 12rpx;
+  font-size: 36rpx; font-weight: 600; color: #333;
+  transition: all 0.15s; min-width: 0;
+}
+.grid-cell.found {
+  background: #e8f4fd; color: #4A90D9; opacity: 0.5;
+}
+.grid-cell:active:not(.found) { background: #e8f4fd; }
+
+.result-area { padding: 24rpx 0; }
