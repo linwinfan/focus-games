@@ -1,5 +1,5 @@
-const { Timer } = require('../../../utils/timer.js');
-const storage = require('../../../utils/storage.js');
+const { Timer } = require('../../utils/timer.js');
+const storage = require('../../utils/storage.js');
 
 const N_OPTIONS = [
   { label: '1-Back', value: 1 },

@@ -1,5 +1,5 @@
-const { Timer } = require('../../../utils/timer.js');
-const storage = require('../../../utils/storage.js');
+const { Timer } = require('../../utils/timer.js');
+const storage = require('../../utils/storage.js');
 
 const COLORS = ['#4A90D9', '#FF6B6B', '#52C41A', '#FAAD14', '#7B68EE'];
 const SHAPES = ['circle', 'triangle', 'square'];

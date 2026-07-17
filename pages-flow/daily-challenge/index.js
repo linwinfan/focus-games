@@ -1,4 +1,4 @@
-const storage = require('../../../utils/storage.js');
+const storage = require('../../utils/storage.js');
 
 const GAME_TYPES = ['schulte', 'reaction', 'memory'];
 const GAME_NAMES = { schulte: '舒尔特方格', reaction: '反应测试', memory: '数字记忆' };

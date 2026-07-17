@@ -1,5 +1,5 @@
-const { Timer } = require('../../../utils/timer.js');
-const storage = require('../../../utils/storage.js');
+const { Timer } = require('../../utils/timer.js');
+const storage = require('../../utils/storage.js');
 
 const TOTAL_ROUNDS = 20;
 const GO_PROBABILITY = 0.75;

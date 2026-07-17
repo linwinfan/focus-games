@@ -1,5 +1,5 @@
-const { Timer } = require('../../../utils/timer.js');
-const storage = require('../../../utils/storage.js');
+const { Timer } = require('../../utils/timer.js');
+const storage = require('../../utils/storage.js');
 
 const GRID_OPTIONS = [
   { label: '3x3', value: 3 },

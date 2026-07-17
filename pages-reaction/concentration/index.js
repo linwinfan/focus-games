@@ -1,5 +1,5 @@
-const { Timer } = require('../../../utils/timer.js');
-const storage = require('../../../utils/storage.js');
+const { Timer } = require('../../utils/timer.js');
+const storage = require('../../utils/storage.js');
 
 const PHASE_DURATION = 60; // 每阶段 60s
 const TOTAL_PHASES = 3;

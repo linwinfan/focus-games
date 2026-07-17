@@ -1,4 +1,4 @@
-const storage = require('../../../utils/storage.js');
+const storage = require('../../utils/storage.js');
 
 const SHOW_TIME = 3000; // 显示 3s
 

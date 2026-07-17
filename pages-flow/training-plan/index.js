@@ -1,4 +1,4 @@
-const storage = require('../../../utils/storage.js');
+const storage = require('../../utils/storage.js');
 
 const PLAN_DATA = [
   { day: 1, games: ['舒尔特方格', '注意力测试'] },

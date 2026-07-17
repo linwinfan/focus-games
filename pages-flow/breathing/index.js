@@ -1,4 +1,4 @@
-const storage = require('../../../utils/storage.js');
+const storage = require('../../utils/storage.js');
 
 const MODES = [
   { label: '4-4-4 箱式', value: 'box', phases: [4, 4, 4] },
