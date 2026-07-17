@@ -1,0 +1,47 @@
+.game-container { padding: 24rpx; }
+.instruction {
+  background: #fff; border-radius: 16rpx; padding: 40rpx 32rpx;
+  margin-bottom: 48rpx;
+}
+.inst-item { font-size: 28rpx; color: #666; margin-bottom: 12rpx; padding-left: 16rpx; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.game-area { padding: 24rpx; }
+.game-info {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 32rpx; margin-bottom: 24rpx;
+}
+.level-display { font-size: 32rpx; font-weight: 600; color: #333; }
+.phase-display { font-size: 28rpx; color: #4A90D9; }
+
+.number-display {
+  background: #fff; border-radius: 16rpx; padding: 80rpx 32rpx;
+  text-align: center;
+}
+.number-text { font-size: 64rpx; font-weight: 700; color: #333; letter-spacing: 8rpx; }
+
+.input-area { background: #fff; border-radius: 16rpx; padding: 32rpx; }
+.input-display {
+  text-align: center; font-size: 48rpx; font-weight: 600; color: #4A90D9;
+  padding: 32rpx; margin-bottom: 24rpx; background: #f8f9fa; border-radius: 12rpx;
+  min-height: 80rpx;
+}
+.numpad { display: flex; flex-direction: column; gap: 16rpx; }
+.numpad-row { display: flex; gap: 16rpx; justify-content: center; }
+.numpad-btn {
+  width: 160rpx; height: 96rpx; border-radius: 12rpx;
+  background: #f0f0f0; display: flex; align-items: center; justify-content: center;
+  font-size: 36rpx; font-weight: 600; color: #333;
+}
+.numpad-btn:active { background: #ddd; }
+
+.nampad-btn-clear, .nampad-btn-submit {
+  width: 248rpx; height: 96rpx; border-radius: 12rpx;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32rpx; font-weight: 600;
+}
+.nampad-btn-clear { background: #f0f0f0; color: #666; }
+.nampad-btn-submit { background: #4A90D9; color: #fff; }
+
+.result-area { padding: 24rpx 0; }

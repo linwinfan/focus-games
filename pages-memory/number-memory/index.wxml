@@ -1,0 +1,65 @@
+<game-header title="数字记忆测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-item">记住显示的数字</view>
+    <view class="inst-item">然后输入你记住的数字</view>
+    <view class="inst-item">每轮增加一位</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="level-display">第 {{level}} 关</text>
+    <text class="phase-display">{{phaseText}}</text>
+  </view>
+
+  <!-- 展示阶段 -->
+  <view class="number-display" wx:if="{{phase === 'show'}}">
+    <text class="number-text">{{currentNumber}}</text>
+  </view>
+
+  <!-- 输入阶段 -->
+  <view class="input-area" wx:if="{{phase === 'input'}}">
+    <view class="input-display">{{userInput || '?'}}</view>
+    <view class="numpad">
+      <view class="numpad-row" wx:for="{{[0,1,2]}}" wx:key="*this" wx:for-item="row">
+        <view
+          class="numpad-btn"
+          wx:for="{{[1,2,3,4,5,6,7,8,9,0].slice(row*3, row*3+3)}}"
+          wx:key="*this"
+          wx:for-item="num"
+          bindtap="onNumTap"
+          data-num="{{num}}"
+        >
+          <text>{{num}}</text>
+        </view>
+      </view>
+      <view class="numpad-row">
+        <view class="nampad-btn-clear" bindtap="onClearTap">
+          <text>清除</text>
+        </view>
+        <view class="nampad-btn-submit" bindtap="onSubmitTap">
+          <text>确认</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="数字记忆测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
