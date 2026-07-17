@@ -1,0 +1,29 @@
+.game-container { padding: 24rpx; }
+.instruction {
+  background: #fff; border-radius: 16rpx; padding: 40rpx 32rpx;
+  margin-bottom: 48rpx;
+}
+.inst-item { font-size: 28rpx; color: #666; margin-bottom: 12rpx; padding-left: 16rpx; }
+.highlight { color: #4A90D9; font-weight: 600; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.game-area { padding: 24rpx; }
+.game-info {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 32rpx; margin-bottom: 24rpx;
+}
+.score-display { font-size: 28rpx; color: #4A90D9; font-weight: 600; }
+.score-display.error { color: #FF4D4F; }
+.timer-display { font-size: 32rpx; color: #333; font-weight: 600; }
+
+.circles-area {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24rpx;
+  background: #fff; border-radius: 16rpx; padding: 32rpx;
+}
+.react-circle {
+  aspect-ratio: 1; border-radius: 50%; opacity: 0.3;
+  transition: all 0.3s;
+}
+.react-circle.lit { opacity: 1; transform: scale(1.05); }
+.result-area { padding: 24rpx 0; }

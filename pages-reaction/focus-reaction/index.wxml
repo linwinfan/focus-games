@@ -1,0 +1,45 @@
+<game-header title="专注反应测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-item">点击闪烁的<text class="highlight">{{targetColorName}}</text>圆</view>
+    <view class="inst-item">不要误触其他颜色</view>
+    <view class="inst-item">60 秒限时</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="score-display">正确: {{correctCount}}</text>
+    <text class="timer-display">{{remainingTime}}s</text>
+    <text class="score-display error">误触: {{falsePositives}}</text>
+  </view>
+  <view class="circles-area">
+    <view
+      class="react-circle {{item.isLit ? 'lit' : ''}}"
+      wx:for="{{circles}}"
+      wx:key="id"
+      style="background: {{item.color}}"
+      bindtap="onCircleTap"
+      data-index="{{index}}"
+    >
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="专注反应测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
