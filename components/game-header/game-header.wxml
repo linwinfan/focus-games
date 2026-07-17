@@ -1,0 +1,10 @@
+<view class="game-header">
+  <view class="header-left" bindtap="onBack">
+    <text class="back-icon">‹</text>
+  </view>
+  <view class="header-title">{{title}}</view>
+  <view class="header-right" bindtap="onSettings" wx:if="{{showSettings}}">
+    <text class="settings-icon">⚙</text>
+  </view>
+  <view class="header-right" wx:else></view>
+</view>

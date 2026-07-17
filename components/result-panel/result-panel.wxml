@@ -1,0 +1,25 @@
+<view class="result-panel">
+  <view class="result-title">{{gameName}}</view>
+  <view class="result-score-row">
+    <view class="result-score">{{scoreText}}</view>
+    <view class="result-trend trend-{{trend}}">{{trendText}}</view>
+  </view>
+  <view class="result-details" wx:if="{{showDetails}}">
+    <view class="detail-item" wx:if="{{duration > 0}}">
+      <text class="detail-label">用时</text>
+      <text class="detail-value">{{durationText}}</text>
+    </view>
+    <view class="detail-item" wx:if="{{accuracy >= 0}}">
+      <text class="detail-label">准确率</text>
+      <text class="detail-value">{{accuracyText}}</text>
+    </view>
+    <view class="detail-item">
+      <text class="detail-label">最佳</text>
+      <text class="detail-value">{{bestText}}</text>
+    </view>
+  </view>
+  <view class="result-actions">
+    <button class="btn-secondary" bindtap="onReplay">再来一局</button>
+    <button class="btn-primary" bindtap="onShare" wx:if="{{showShare}}">分享成绩</button>
+  </view>
+</view>

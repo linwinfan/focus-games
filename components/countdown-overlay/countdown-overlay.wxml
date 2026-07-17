@@ -1,0 +1,3 @@
+<view class="countdown-overlay" wx:if="{{visible}}">
+  <view class="countdown-number">{{count}}</view>
+</view>

@@ -1,0 +1,17 @@
+<view class="history-list">
+  <view class="history-title">历史记录</view>
+  <view class="history-empty" wx:if="{{!formattedRecords || formattedRecords.length === 0}}">
+    <text>还没有记录，先完成一局</text>
+  </view>
+  <view class="history-items" wx:else>
+    <view class="history-item" wx:for="{{formattedRecords}}" wx:key="timestamp">
+      <view class="item-left">
+        <text class="item-score">{{item.scoreText}}</text>
+        <text class="item-date">{{item.dateText}}</text>
+      </view>
+      <view class="item-right">
+        <text class="item-best" wx:if="{{item.isBest}}">最佳</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="games-list">
+    <view
+      class="game-card"
+      wx:for="{{games}}"
+      wx:key="id"
+      bindtap="onGameTap"
+      data-route="{{item.route}}"
+    >
+      <view class="game-card-left">
+        <view class="game-name">{{item.name}}</view>
+        <view class="game-desc">{{item.description}}</view>
+      </view>
+      <view class="game-card-right">
+        <text class="game-arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>

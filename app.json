@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/games-list/index",
+    "pages/profile/index",
+    "pages/schulte-table/index",
+    "pages/pomodoro/index"
+  ],
+  "subpackages": [
+    {
+      "root": "pages-focus",
+      "pages": [
+        "reverse-schulte/index",
+        "schulte-kids/index"
+      ]
+    },
+    {
+      "root": "pages-cognitive",
+      "pages": [
+        "stroop-test/index",
+        "reverse-stroop/index"
+      ]
+    },
+    {
+      "root": "pages-reaction",
+      "pages": [
+        "attention-test/index",
+        "reaction-time/index",
+        "visual-search/index",
+        "focus-reaction/index",
+        "concentration/index"
+      ]
+    },
+    {
+      "root": "pages-memory",
+      "pages": [
+        "memory-sequence/index",
+        "number-memory/index",
+        "working-memory/index",
+        "dual-n-back/index"
+      ]
+    },
+    {
+      "root": "pages-flow",
+      "pages": [
+        "breathing/index",
+        "training-plan/index",
+        "daily-challenge/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "专注力训练",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f5f5"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

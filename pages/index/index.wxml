@@ -1,0 +1,50 @@
+<view class="container">
+  <!-- 顶部统计 -->
+  <view class="hero-section">
+    <view class="hero-title">专注力训练</view>
+    <view class="hero-stats">
+      <view class="stat-item">
+        <text class="stat-num">{{totalGames}}</text>
+        <text class="stat-label">总局数</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{todayMinutes}}</text>
+        <text class="stat-label">今日专注(分)</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类入口 -->
+  <view class="section-title">训练分类</view>
+  <view class="categories">
+    <view
+      class="cat-card"
+      wx:for="{{categories}}"
+      wx:key="id"
+      style="background: {{item.color}}18"
+      bindtap="onCategoryTap"
+      data-id="{{item.id}}"
+    >
+      <view class="cat-name" style="color: {{item.color}}">{{item.name}}</view>
+      <view class="cat-count">{{gameCounts[item.id]}} 个训练</view>
+    </view>
+  </view>
+
+  <!-- 最近使用 -->
+  <block wx:if="{{recentGames.length > 0}}">
+    <view class="section-title">最近使用</view>
+    <view class="recent-list">
+      <view
+        class="recent-item"
+        wx:for="{{recentGames}}"
+        wx:key="id"
+        bindtap="onGameTap"
+        data-route="{{item.route}}"
+      >
+        <view class="recent-name">{{item.name}}</view>
+        <view class="recent-arrow">›</view>
+      </view>
+    </block>
+  </block>
+</view>
