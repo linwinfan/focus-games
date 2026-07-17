@@ -1,0 +1,37 @@
+<game-header title="反应时间测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-item">屏幕变绿时</view>
+    <view class="inst-item">尽快点击！</view>
+    <view class="inst-warn">变绿前点击 = 抢按</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area {{screenColor}}" wx:elif="{{state === 'playing'}}"
+  bindtap="onTap">
+  <view class="round-info">第 {{currentRound}}/{{totalRounds}} 轮</view>
+  <view class="message-area">
+    <text wx:if="{{phase === 'waiting'}}" class="msg-waiting">等待绿色...</text>
+    <text wx:if="{{phase === 'go'}}" class="msg-go">点击!</text>
+    <text wx:if="{{phase === 'result'}}" class="msg-result">{{roundResultText}}</text>
+    <text wx:if="{{phase === 'falseStart'}}" class="msg-false">抢按了! 等待重试</text>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="反应时间测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>

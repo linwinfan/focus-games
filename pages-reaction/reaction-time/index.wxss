@@ -1,0 +1,25 @@
+.game-container { padding: 24rpx; }
+.instruction {
+  background: #fff; border-radius: 16rpx; padding: 40rpx 32rpx;
+  margin-bottom: 48rpx; text-align: center;
+}
+.inst-item { font-size: 32rpx; color: #333; margin-bottom: 12rpx; }
+.inst-warn { font-size: 26rpx; color: #FF4D4F; margin-top: 24rpx; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.game-area {
+  height: 70vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; border-radius: 16rpx;
+  transition: background 0.1s;
+}
+.game-area.waiting { background: #FF4D4F; }
+.game-area.go { background: #52C41A; }
+.round-info { font-size: 26rpx; color: rgba(255,255,255,0.8); margin-bottom: 32rpx; }
+.message-area { text-align: center; }
+.msg-waiting { font-size: 40rpx; color: #fff; }
+.msg-go { font-size: 48rpx; color: #fff; font-weight: 700; }
+.msg-result { font-size: 36rpx; color: rgba(255,255,255,0.9); }
+.msg-false { font-size: 32rpx; color: rgba(255,255,255,0.9); }
+
+.result-area { padding: 24rpx 0; }
