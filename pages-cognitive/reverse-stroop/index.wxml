@@ -1,0 +1,38 @@
+<game-header title="反向斯特鲁普" />
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">忽略颜色，选择文字的内容</view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="round-info">第 {{currentRound}}/{{totalRounds}} 轮</view>
+  <view class="stroop-word" style="color: {{currentWord.color}}">
+    <text>{{currentWord.text}}</text>
+  </view>
+  <view class="color-buttons">
+    <view
+      class="color-btn"
+      wx:for="{{colorOptions}}"
+      wx:key="value"
+      style="background: {{item.value}}"
+      bindtap="onColorTap"
+      data-label="{{item.label}}"
+    >
+      <text>{{item.label}}</text>
+    </view>
+  </view>
+</view>
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="反向斯特鲁普"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>

@@ -1,0 +1,14 @@
+.game-container { padding: 24rpx; }
+.instruction {
+  background: #fff; border-radius: 16rpx; padding: 48rpx 32rpx;
+  text-align: center; font-size: 30rpx; color: #666; margin-bottom: 48rpx;
+}
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+.game-area { padding: 24rpx; }
+.round-info { text-align: center; font-size: 26rpx; color: #999; margin-bottom: 32rpx; }
+.stroop-word { text-align: center; font-size: 80rpx; font-weight: 700; margin: 64rpx 0; min-height: 120rpx; }
+.color-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 24rpx; }
+.color-btn { padding: 40rpx; border-radius: 16rpx; text-align: center; }
+.color-btn text { color: #fff; font-size: 32rpx; font-weight: 600; text-shadow: 0 1rpx 4rpx rgba(0,0,0,0.3); }
+.result-area { padding: 24rpx 0; }
