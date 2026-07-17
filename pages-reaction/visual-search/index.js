@@ -2,7 +2,6 @@ const { Timer } = require('../../utils/timer.js');
 const storage = require('../../utils/storage.js');
 
 const COLORS = ['#4A90D9', '#FF6B6B', '#52C41A', '#FAAD14', '#7B68EE'];
-const SHAPES = ['circle', 'triangle', 'square'];
 const TIME_LIMIT = 5000; // 每关 5s
 const BASE_ITEMS = 10;
 
@@ -30,15 +29,21 @@ Page({
   onStart() {
     this.totalItems = 0;
     this.totalCorrect = 0;
-    this.setState('playing', 1);
+    this.setData({ state: 'playing', level: 1 });
     this._startLevel(1);
   },
 
-  setState(state, level) {
-    this.setData({ state, level });
+  _clearTimer() {
+    if (this.countdown) {
+      clearInterval(this.countdown);
+      this.countdown = null;
+    }
   },
 
   _startLevel(level) {
+    // 先清除旧定时器，防止叠加
+    this._clearTimer();
+
     const itemCount = BASE_ITEMS + (level - 1) * 5;
     const targetIndex = Math.floor(Math.random() * itemCount);
     const normalColor = COLORS[Math.floor(Math.random() * COLORS.length)];
@@ -49,13 +54,12 @@ Page({
 
     const items = Array.from({ length: itemCount }, (_, i) => ({
       id: i,
-      isTarget: i === targetIndex,
-      shape: SHAPES[Math.floor(Math.random() * SHAPES.length)]
+      isTarget: i === targetIndex
     }));
 
-    this.setData({ items, normalColor, targetColor });
+    this.setData({ level, items, normalColor, targetColor, timerDisplay: '5.0s' });
 
-    // 开始计时
+    // 开始本关计时
     this.levelTimer = new Timer();
     this.levelTimer.start();
     this.countdown = setInterval(() => {
@@ -63,32 +67,36 @@ Page({
       const remaining = Math.max(0, TIME_LIMIT - elapsed);
       this.setData({ timerDisplay: `${(remaining / 1000).toFixed(1)}s` });
       if (remaining <= 0) {
+        this._clearTimer();
         this._onComplete();
       }
     }, 100);
   },
 
   onItemTap(e) {
+    if (this.data.state !== 'playing') return;
+
     const index = e.currentTarget.dataset.index;
     const item = this.data.items[index];
     this.totalItems++;
 
-    clearInterval(this.countdown);
+    // 立即停止计时
+    this._clearTimer();
 
     if (item.isTarget) {
-      // 正确
+      // 正确：进入下一关
       this.totalCorrect++;
       getApp().globalData.audioManager.playSuccess();
       this._startLevel(this.data.level + 1);
     } else {
-      // 错误
+      // 错误：游戏结束
       getApp().globalData.audioManager.playFail();
       this._onComplete();
     }
   },
 
   _onComplete() {
-    clearInterval(this.countdown);
+    this._clearTimer();
     const totalTime = this.levelTimer ? this.levelTimer.getElapsed() : 0;
     const maxLevel = this.data.level;
     const accuracy = this.totalItems > 0 ? this.totalCorrect / this.totalItems : 0;
@@ -122,7 +130,7 @@ Page({
   onReplay() { this.setData({ state: 'ready' }); },
   onShare() { wx.showToast({ title: '分享功能在 Phase 5 实现', icon: 'none' }); },
   onUnload() {
-    clearInterval(this.countdown);
+    this._clearTimer();
     if (this.levelTimer) this.levelTimer.reset();
   }
 });
