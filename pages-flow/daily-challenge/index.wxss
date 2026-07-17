@@ -1,0 +1,58 @@
+.daily-container { padding: 24rpx; }
+.streak-section {
+  text-align: center; padding: 48rpx 0;
+  background: #fff; border-radius: 16rpx; margin-bottom: 24rpx;
+}
+.streak-num { font-size: 80rpx; font-weight: 700; color: #4A90D9; }
+.streak-label { font-size: 26rpx; color: #999; margin-top: 8rpx; }
+
+.completed-section {
+  text-align: center; padding: 48rpx 0;
+  background: #f6ffed; border-radius: 16rpx; margin-bottom: 24rpx;
+}
+.completed-icon { font-size: 80rpx; margin-bottom: 16rpx; }
+.completed-text { font-size: 32rpx; font-weight: 600; color: #52c41a; }
+.completed-score { font-size: 28rpx; color: #666; margin-top: 8rpx; }
+
+.challenge-info {
+  background: #fff; border-radius: 16rpx; padding: 40rpx 32rpx;
+  text-align: center; margin-bottom: 32rpx;
+}
+.challenge-title { font-size: 32rpx; font-weight: 600; color: #333; margin-bottom: 12rpx; }
+.challenge-desc { font-size: 26rpx; color: #666; }
+
+.start-area { margin-top: 32rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+
+.challenge-area { padding: 24rpx; }
+.challenge-hud {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 32rpx; margin-bottom: 24rpx;
+}
+.hud-game { font-size: 28rpx; font-weight: 600; color: #333; }
+.hud-timer { font-size: 32rpx; color: #4A90D9; font-weight: 600; }
+
+.challenge-game-area { background: #fff; border-radius: 16rpx; padding: 32rpx; min-height: 60vh; }
+
+.mini-grid {
+  display: grid; gap: 12rpx; aspect-ratio: 1;
+}
+.mini-grid .grid-cell {
+  display: flex; align-items: center; justify-content: center;
+  background: #f8f9fa; border-radius: 12rpx;
+  font-size: 32rpx; font-weight: 600; color: #333;
+}
+.mini-grid .grid-cell.found { background: #e8f4fd; color: #4A90D9; opacity: 0.5; }
+
+.mini-reaction {
+  height: 50vh; border-radius: 16rpx; display: flex;
+  align-items: center; justify-content: center;
+}
+.mini-reaction.waiting { background: #FF4D4F; }
+.mini-reaction.go { background: #52C41A; }
+.mini-reaction text { font-size: 40rpx; color: #fff; }
+
+.mini-memory { text-align: center; padding: 80rpx 0; }
+.remember-num { font-size: 60rpx; font-weight: 700; color: #333; letter-spacing: 8rpx; }
+
+.challenge-result { padding: 24rpx 0; }

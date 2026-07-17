@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "每日挑战",
+  "usingComponents": {
+    "game-header": "/components/game-header/game-header",
+    "result-panel": "/components/result-panel/result-panel"
+  }
+}

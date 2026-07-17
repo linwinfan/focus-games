@@ -1,0 +1,74 @@
+<game-header title="每日挑战" />
+
+<view class="daily-container" wx:if="{{state === 'ready'}}">
+  <view class="streak-section">
+    <view class="streak-num">{{streak}}</view>
+    <view class="streak-label">连续打卡天数</view>
+  </view>
+
+  <block wx:if="{{todayCompleted}}">
+    <view class="completed-section">
+      <view class="completed-icon">✅</view>
+      <view class="completed-text">今日已完成</view>
+      <view class="completed-score">得分: {{todayScore}}</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="challenge-info">
+      <view class="challenge-title">今日 5 分钟综合挑战</view>
+      <view class="challenge-desc">随机抽取 3 个游戏各 1 分钟</view>
+    </view>
+    <view class="start-area">
+      <button class="btn-primary btn-large" bindtap="onStart">开始挑战</button>
+    </view>
+  </block>
+</view>
+
+<view class="challenge-area" wx:elif="{{state === 'playing'}}">
+  <view class="challenge-hud">
+    <text class="hud-game">第 {{currentGameIndex + 1}}/3 关: {{currentGameName}}</text>
+    <text class="hud-timer">{{remainingTime}}s</text>
+  </view>
+
+  <!-- 游戏内容根据当前游戏动态显示 -->
+  <view class="challenge-game-area">
+    <view wx:if="{{currentGame === 'schulte'}}" class="mini-game">
+      <view class="grid mini-grid" style="grid-template-columns: repeat({{gridSize}}, 1fr)">
+        <view
+          class="grid-cell {{item.found ? 'found' : ''}}"
+          wx:for="{{gridData}}"
+          wx:key="value"
+          bindtap="onMiniTap"
+          data-value="{{item.value}}"
+        >
+          <text>{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{currentGame === 'reaction'}}" class="mini-game">
+      <view class="mini-reaction {{screenColor}}" bindtap="onMiniTap">
+        <text wxngIf="{{screenColor === 'waiting' || screenColor === 'go'}}">
+          {{screenColor === 'go' ? '点!' : '等待...'}}
+        </text>
+      </view>
+    </view>
+    <view wx:if="{{currentGame === 'memory'}}" class="mini-game">
+      <view class="mini-memory">
+        <view class="remember-num">{{memoryNumber}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="challenge-result" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="每日挑战"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+</view>
