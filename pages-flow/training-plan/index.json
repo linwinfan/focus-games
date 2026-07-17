@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "训练计划",
+  "usingComponents": {
+    "game-header": "/components/game-header/game-header"
+  }
+}

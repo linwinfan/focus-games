@@ -1,0 +1,37 @@
+<game-header title="7 天训练计划" />
+
+<view class="plan-container">
+  <view class="plan-header">
+    <text class="plan-title">每日训练计划</text>
+    <text class="plan-subtitle">按照推荐节奏，系统提升专注力</text>
+  </view>
+
+  <view class="plan-days">
+    <view
+      class="day-card {{item.completed ? 'completed' : ''}} {{item.current ? 'current' : ''}}"
+      wx:for="{{days}}"
+      wx:key="day"
+      bindtap="onDayTap"
+      data-day="{{item.day}}"
+    >
+      <view class="day-header">
+        <text class="day-label">第 {{item.day}} 天</text>
+        <text class="day-status">{{item.completed ? '✓ 已完成' : (item.current ? '进行中' : '')}}</text>
+      </view>
+      <view class="day-games">
+        <view class="game-tag" wx:for="{{item.games}}" wx:for-item="game" wx:key="id">
+          <text>{{game}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 进度 -->
+  <view class="plan-progress">
+    <text class="progress-label">完成进度</text>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <text class="progress-text">{{completedCount}}/7 天</text>
+  </view>
+</view>
