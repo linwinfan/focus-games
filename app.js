@@ -14,5 +14,11 @@ App({
 
     // 加载游戏配置
     this.globalData.gamesConfig = require('./config/games.js');
+
+    // 开启转发功能
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    });
   }
 });

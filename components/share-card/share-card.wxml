@@ -1,0 +1,9 @@
+<view class="share-card-overlay" wx:if="{{visible}}">
+  <view class="share-card-container">
+    <canvas type="2d" id="shareCanvas" class="share-canvas" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"></canvas>
+    <view class="share-actions">
+      <button class="btn-secondary" bindtap="onClose">取消</button>
+      <button class="btn-primary" bindtap="onShareToChat">转发给朋友</button>
+    </view>
+  </view>
+</view>
