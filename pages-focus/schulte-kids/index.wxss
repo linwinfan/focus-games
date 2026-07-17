@@ -1,0 +1,27 @@
+.game-container { padding: 24rpx; }
+.kids-title {
+  text-align: center; font-size: 36rpx; color: #FF6B6B;
+  font-weight: 600; margin: 32rpx 0;
+}
+.setup-section { background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 24rpx; }
+.start-area { margin-top: 48rpx; }
+.btn-large { width: 100%; padding: 28rpx; font-size: 34rpx; }
+.kids-btn { background: #FF6B6B; }
+.kids-area { padding: 24rpx; }
+.game-info {
+  display: flex; justify-content: center; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 24rpx;
+}
+.timer-display { font-size: 40rpx; font-weight: 600; color: #FF6B6B; }
+.kids-grid {
+  display: grid; gap: 16rpx; background: #FFF8E1;
+  border-radius: 20rpx; padding: 24rpx; aspect-ratio: 1;
+}
+.kids-cell {
+  display: flex; align-items: center; justify-content: center;
+  background: #fff; border-radius: 16rpx;
+  font-size: 48rpx; font-weight: 700; color: #FF6B6B;
+  border: 3rpx solid #FFE0B2;
+}
+.kids-cell.found { background: #FFE0B2; color: #FF6B6B; opacity: 0.5; }
+.result-area { padding: 24rpx 0; }

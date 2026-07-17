@@ -1,0 +1,46 @@
+<game-header title="儿童舒尔特" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="kids-title">小朋友，按顺序找数字吧！</view>
+  <view class="setup-section">
+    <difficulty-selector
+      label="选择大小"
+      options="{{gridOptions}}"
+      selected="{{gridSize}}"
+      bind:change="onGridChange"
+    />
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large kids-btn" bindtap="onStart">开始玩</button>
+  </view>
+</view>
+
+<view class="game-area kids-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="timer-display">{{timerDisplay}}</text>
+  </view>
+  <view class="grid kids-grid" style="grid-template-columns: repeat({{gridSize}}, 1fr)">
+    <view
+      class="grid-cell kids-cell {{item.found ? 'found' : ''}}"
+      wx:for="{{gridData}}"
+      wx:key="value"
+      bindtap="onCellTap"
+      data-value="{{item.value}}"
+    >
+      <text>{{item.value}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="儿童舒尔特"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+</view>
