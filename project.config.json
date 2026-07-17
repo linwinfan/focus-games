@@ -1,7 +1,12 @@
 {
   "description": "专注力训练微信小程序",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {"type": "file", "value": "scripts/generate-audio.js"},
+      {"type": "file", "value": "scripts/svg-to-png.md"},
+      {"type": "file", "value": "README.md"},
+      {"type": "file", "value": "LICENSE"}
+    ],
     "include": []
   },
   "setting": {
