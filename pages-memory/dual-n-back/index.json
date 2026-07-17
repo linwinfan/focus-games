@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Dual N-Back",
+  "usingComponents": {
+    "game-header": "/components/game-header/game-header",
+    "difficulty-selector": "/components/difficulty-selector/difficulty-selector",
+    "result-panel": "/components/result-panel/result-panel",
+    "history-list": "/components/history-list/history-list"
+  }
+}

@@ -1,0 +1,92 @@
+<game-header title="Dual N-Back" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="setup-section">
+    <difficulty-selector
+      label="N 值（记忆深度）"
+      options="{{nOptions}}"
+      selected="{{nValue}}"
+      bind:change="onNChange"
+    />
+    <difficulty-selector
+      label="轮数"
+      options="{{roundOptions}}"
+      selected="{{totalRounds}}"
+      bind:change="onRoundChange"
+    />
+  </view>
+  <view class="instruction">
+    <view class="inst-item">判断当前刺激是否与 {{nValue}} 轮前匹配</view>
+    <view class="inst-item">位置匹配 → 点击 [位置]</view>
+    <view class="inst-item">字母匹配 → 点击 [字母]</view>
+  </view>
+  <view class="best-record" wx:if="{{bestLevel > 0}}">
+    最佳成绩：<text class="best-val">{{bestLevel}}级</text>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始训练</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="progress-display">{{currentRound}}/{{totalRounds}}</text>
+    <text class="n-label">{{nValue}}-Back</text>
+  </view>
+
+  <!-- 3x3 方格 -->
+  <view class="grid nback-grid">
+    <view
+      class="grid-cell nback-cell {{item.active ? 'active' : ''}}"
+      wx:for="{{gridCells}}"
+      wx:key="id"
+    >
+      <view wx:if="{{item.active}}" class="position-marker"></view>
+    </view>
+  </view>
+
+  <!-- 字母显示 -->
+  <view class="letter-display" wx:if="{{currentLetter}}">
+    <text class="letter-text">{{currentLetter}}</text>
+  </view>
+
+  <!-- 控制按钮 -->
+  <view class="nback-controls">
+    <button class="btn-secondary nback-btn" bindtap="onPositionMatch">位置匹配</button>
+    <button class="btn-secondary nback-btn" bindtap="onLetterMatch">字母匹配</button>
+  </view>
+
+  <!-- 准确率显示 -->
+  <view class="accuracy-display" wx:if="{{currentRound > nValue}}">
+    <text>准确率: {{accuracyText}}</text>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="Dual N-Back"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    showDetails="{{true}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <view class="nback-stats" wx:if="{{nbackDetails}}">
+    <view class="stat-row">
+      <text class="stat-label">命中率</text>
+      <text class="stat-val">{{nbackDetails.hitRate}}</text>
+    </view>
+    <view class="stat-row">
+      <text class="stat-label">误报率</text>
+      <text class="stat-val">{{nbackDetails.falseAlarmRate}}</text>
+    </view>
+    <view class="stat-row">
+      <text class="stat-label">漏判率</text>
+      <text class="stat-val">{{nbackDetails.missRate}}</text>
+    </view>
+  </view>
+  <history-list records="{{history}}" />
+</view>
