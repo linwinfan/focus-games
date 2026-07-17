@@ -1,0 +1,71 @@
+<game-header title="工作记忆测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-item">1. 记住显示的数字</view>
+    <view class="inst-item">2. 完成简单计算</view>
+    <view class="inst-item">3. 回忆刚才的数字</view>
+    <view class="inst-item">每轮数字长度 +1</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="game-info">
+    <text class="level-display">第 {{level}} 关</text>
+    <text class="phase-display">{{phaseText}}</text>
+  </view>
+
+  <!-- 记数字 -->
+  <view class="phase-content" wx:if="{{phase === 'memory'}}">
+    <view class="number-display">
+      <text class="number-text">{{memoryNumber}}</text>
+    </view>
+  </view>
+
+  <!-- 计算 -->
+  <view class="phase-content" wx:if="{{phase === 'calc'}}">
+    <view class="calc-problem">{{calcProblem}} = ?</view>
+    <view class="calc-input-area">
+      <input
+        class="calc-input"
+        type="number"
+        value="{{calcInput}}"
+        bindinput="onCalcInput"
+        focus="{{phase === 'calc'}}"
+      />
+      <button class="btn-primary" bindtap="onCalcSubmit">确认</button>
+    </view>
+  </view>
+
+  <!-- 回忆 -->
+  <view class="phase-content" wx:if="{{phase === 'recall'}}">
+    <view class="recall-prompt">刚才的数字是?</view>
+    <view class="recall-input-area">
+      <input
+        class="recall-input"
+        type="number"
+        value="{{recallInput}}"
+        bindinput="onRecallInput"
+        focus="{{phase === 'recall'}}"
+      />
+      <button class="btn-primary" bindtap="onRecallSubmit">确认</button>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="工作记忆测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
