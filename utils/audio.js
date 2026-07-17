@@ -1,18 +1,18 @@
 const MUTED_KEY = 'audio_muted';
 
 const SOUND_FILES = {
-  click: 'https://cdn.example.com/audio/click.mp3',
-  correct: 'https://cdn.example.com/audio/correct.mp3',
-  wrong: 'https://cdn.example.com/audio/wrong.mp3',
-  countdown: 'https://cdn.example.com/audio/countdown.mp3',
-  complete: 'https://cdn.example.com/audio/complete.mp3',
-  breatheIn: 'https://cdn.example.com/audio/breathe_in.mp3',
-  breatheOut: 'https://cdn.example.com/audio/breathe_out.mp3'
+  click: 'audio/click.wav',
+  correct: 'audio/correct.wav',
+  wrong: 'audio/wrong.wav',
+  countdown: 'audio/countdown.wav',
+  complete: 'audio/complete.wav',
+  breatheIn: 'audio/breathe_in.wav',
+  breatheOut: 'audio/breathe_out.wav'
 };
 
 const LETTER_FILES = {};
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter => {
-  LETTER_FILES[letter] = `https://cdn.example.com/audio/letters/${letter}.mp3`;
+  LETTER_FILES[letter] = `audio/letters/${letter}.wav`;
 });
 
 class AudioManager {
