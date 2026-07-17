@@ -1,0 +1,43 @@
+<game-header title="注意力测试" />
+
+<view class="game-container" wx:if="{{state === 'ready'}}">
+  <view class="instruction">
+    <view class="inst-title">Go/No-Go 测试</view>
+    <view class="inst-item">绿色圆出现时 → 点击（Go）</view>
+    <view class="inst-item">红色圆出现时 → 不点击（No-Go）</view>
+    <view class="inst-item">共 20 轮</view>
+  </view>
+  <view class="start-area">
+    <button class="btn-primary btn-large" bindtap="onStart">开始测试</button>
+  </view>
+</view>
+
+<view class="game-area" wx:elif="{{state === 'playing'}}">
+  <view class="round-info">第 {{currentRound}}/{{totalRounds}} 轮</view>
+  <view class="go-area">
+    <view
+      class="stimulus-circle {{stimulusType === 'go' ? 'go' : 'no-go'}}"
+      wx:if="{{showStimulus}}"
+      bindtap="onTap"
+    >
+      <text wx:if="{{stimulusType === 'go'}}">点!</text>
+    </view>
+    <view class="waiting-text" wx:elif="{{waiting}}">
+      <text>等待...</text>
+    </view>
+  </view>
+</view>
+
+<view class="result-area" wx:elif="{{state === 'finished'}}">
+  <result-panel
+    gameName="注意力测试"
+    scoreText="{{result.scoreText}}"
+    bestText="{{result.bestText}}"
+    duration="{{result.duration}}"
+    accuracy="{{result.accuracy}}"
+    trend="{{result.trend}}"
+    bind:replay="onReplay"
+    bind:share="onShare"
+  />
+  <history-list records="{{history}}" />
+</view>
